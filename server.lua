@@ -10,11 +10,6 @@ local namecache = {}
 
 function split(s, delimiter)result = {};for match in (s..delimiter):gmatch("(.-)"..delimiter) do table.insert(result, match) end return result end
 
-Citizen.CreateThread(function() -- startup
-    TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-    while ESX==nil do Wait(0) end
-end)
-
 AddEventHandler("playerConnecting",function(name, setKick, def)
     local identifiers = GetPlayerIdentifiers(source)
     if #identifiers>0 and identifiers[1]~=nil then
