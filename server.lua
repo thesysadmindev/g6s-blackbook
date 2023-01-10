@@ -58,7 +58,7 @@ AddEventHandler("playerConnecting", function(name, setKick, def)
                 '**[Current Session ID]:** '..source..'\n'..
                 '**[Connected Time]:** '..timestamp..'\n'
             }
-            TriggerEvent('g6s_blackbook:sendWebhook', whData)
+            SendWebHook(whData)
         end
 
         if Config.oxmysql then
