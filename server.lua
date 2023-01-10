@@ -19,6 +19,7 @@ AddEventHandler("playerConnecting", function(name, setKick, def)
     local identifiers = GetPlayerIdentifiers(source)
     if #identifiers > 0 and identifiers[1] ~= nil then
         local playername = GetPlayerName(source)
+        local token = GetPlayerToken(source)
         local saneplayername = "Adjusted Playername"
         local steamid  = false
         local license  = false
@@ -32,6 +33,7 @@ AddEventHandler("playerConnecting", function(name, setKick, def)
             
         local data = {
             ["@name"] = saneplayername,
+            ["@token"] = token,
             ["@timestamp"] = os.date("%Y-%m-%d %X")
         }
         if Config.loginLogLink ~= '' then    
@@ -55,6 +57,7 @@ AddEventHandler("playerConnecting", function(name, setKick, def)
                 '**[User]:** '..playername..'\n'..
                 '**[Steam Identifier]:** '..steamid..'\n'..
                 '**[Rockstar Identifier]:** '..license..'\n'..
+                '**[FiveM Token]:** '..token..'\n'..
                 '**[Current Session ID]:** '..source..'\n'..
                 '**[Connected Time]:** '..timestamp..'\n'
             }
@@ -62,9 +65,9 @@ AddEventHandler("playerConnecting", function(name, setKick, def)
         end
 
         if Config.oxmysql then
-            MySQL.update("INSERT INTO `blackbook` (`steam`, `license`, `ip`, `name`, `xbl`, `live`, `discord`, `fivem`, `lastconnect`) VALUES (@steam, @license, @ip, @name, @xbl, @live, @discord, @fivem, @timestamp) ON DUPLICATE KEY UPDATE `license`=@license, `ip`=@ip, `name`=@name, `xbl`=@xbl, `live`=@live, `discord`=@discord, `fivem`=@fivem, `lastconnect`=@timestamp", data)
+            MySQL.update("INSERT INTO `blackbook` (`steam`, `license`, `ip`, `name`, `xbl`, `live`, `discord`, `fivem`, `token`, `lastconnect`) VALUES (@steam, @license, @ip, @name, @xbl, @live, @discord, @fivem, @token, @timestamp) ON DUPLICATE KEY UPDATE `license`=@license, `ip`=@ip, `name`=@name, `xbl`=@xbl, `live`=@live, `discord`=@discord, `fivem`=@fivem, `token`=@token, `lastconnect`=@timestamp", data)
         else
-            MySQL.Async.execute("INSERT INTO `blackbook` (`steam`, `license`, `ip`, `name`, `xbl`, `live`, `discord`, `fivem`, `lastconnect`) VALUES (@steam, @license, @ip, @name, @xbl, @live, @discord, @fivem, @timestamp) ON DUPLICATE KEY UPDATE `license`=@license, `ip`=@ip, `name`=@name, `xbl`=@xbl, `live`=@live, `discord`=@discord, `fivem`=@fivem, `lastconnect`=@timestamp", data)
+            MySQL.Async.execute("INSERT INTO `blackbook` (`steam`, `license`, `ip`, `name`, `xbl`, `live`, `discord`, `fivem`, `token`, `lastconnect`) VALUES (@steam, @license, @ip, @name, @xbl, @live, @discord, @fivem, @token, @timestamp) ON DUPLICATE KEY UPDATE `license`=@license, `ip`=@ip, `name`=@name, `xbl`=@xbl, `live`=@live, `discord`=@discord, `fivem`=@fivem, `token`=@token, `lastconnect`=@timestamp", data)
         end
     else
         DropPlayer(source, "[BlackBook] No identifiers were found when connecting, please reconnect")
