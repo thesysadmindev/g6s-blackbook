@@ -6,6 +6,7 @@ description 'BlackBook Identifier System, logs all player identifiers to a datab
 version '1.0.0'
 
 server_scripts {
-    '@mysql-async/lib/MySQL.lua',
+    '@mysql-async/lib/MySQL.lua', -- comment this if you are using oxmysql
+   -- '@oxmysql/lib/MySQL.lua', uncomment this if you are using oxmysql
     'server.lua'
 }
