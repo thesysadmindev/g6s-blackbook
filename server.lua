@@ -71,19 +71,6 @@ AddEventHandler("playerConnecting", function(name, setKick, def)
     end
 end)
 
-AddEventHandler('g6s_blackbook:sendWebhook', function(whData)
-    if whData.link == nil then
-        whLink = Config.whLink
-    else
-        whLink = whData.link
-    end
-        
-    title = whData.title
-    color = whData.color
-    message = whData.message
-    SendWebHook(whLink, title, color, message)
-end)
-
 function SendWebHook(discord_webhook, title, color, message)
     local embedMsg = {}
     timestamp = os.date("%c")
