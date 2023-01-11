@@ -7,6 +7,7 @@ CREATE TABLE `blackbook` (
 	`live` VARCHAR(60) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
 	`discord` VARCHAR(60) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
 	`fivem` VARCHAR(60) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`token` VARCHAR(128) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
 	`lastconnect` DATETIME NULL DEFAULT NULL,
 	PRIMARY KEY (`license`) USING BTREE
 )
