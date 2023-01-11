@@ -1,5 +1,6 @@
 Config = {}
 
+Config.debug = false
 Config.whName = 'Player ID Logger' -- The Webhook bot's name.
 Config.whLink = '' -- Enter your Discord channel webhook URL here. https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks.
 Config.oxmysql = false -- true if using oxmysql, false if using mysql-async. Please make sure to change fxmanifest.lua if you are changing this option.
@@ -61,6 +62,11 @@ AddEventHandler("playerConnecting", function(name, setKick, def)
                 '**[Current Session ID]:** '..source..'\n'..
                 '**[Connected Time]:** '..timestamp..'\n'
             }
+            if Config.debug then
+                print('Prior to SendWebHook being activated - ')
+                print('whData.link: ' .. whData.link \n 'whData.title: ' .. whData.link \n 'whData.color: ' .. whData.link \n 'whData.link: ' .. whData.message \n )
+            end
+                
             SendWebHook(whData.link, whData.title, whData.color, whData.message)
         end
 
@@ -87,5 +93,10 @@ function SendWebHook(discord_webhook, title, color, message)
             },
         }
     }
+    if Config.debug then
+        print('After to SendWebHook being activated - ')
+        print('discord_webhook: ' .. whData.link \n 'title: ' .. whData.link \n 'color: ' .. whData.link \n 'link: ' .. whData.message \n )
+    end
+    
     PerformHttpRequest(discord_webhook, function(err, text, headers)end, 'POST', json.encode({username = Config.whName, embeds = embedMsg}), { ['Content-Type']= 'application/json' })
 end
