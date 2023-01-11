@@ -61,7 +61,7 @@ AddEventHandler("playerConnecting", function(name, setKick, def)
                 '**[Current Session ID]:** '..source..'\n'..
                 '**[Connected Time]:** '..timestamp..'\n'
             }
-            SendWebHook(whData)
+            SendWebHook(whData.link, whData.title, whData.color, whData.message)
         end
 
         if Config.oxmysql then
@@ -81,7 +81,7 @@ function SendWebHook(discord_webhook, title, color, message)
         {
             ["color"] = color,
             ["title"] = title,
-            ["description"] =  ""..message.."",
+            ["description"] = message,
             ["footer"] ={
             ["text"] = timestamp.." (Server Time).",
             },
