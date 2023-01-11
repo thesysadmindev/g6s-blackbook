@@ -1,15 +1,15 @@
 
 # g6s-blackbook
 
-g6s-blackbook is a simple FiveM ESX resource, that logs all of a connecting player's identifiers to a table within the server database as well as the time they connected, and sends a message to a Discord channel via a webhook.
+g6s-blackbook is a simple FiveM ~~ESX~~ standalone resource, that logs all of a connecting player's identifiers to a table within the server database as well as the time they connected, and sends a message to a Discord channel via a webhook.
 
 The possibilities are endless with this resource! It can be used to moderation on both FiveM servers and linked server forums (so if a player is banned from a server they are banned from the forum), clearing out player data for those who have not connected for a set time period, etc.
 
-This resource is functional, albeit not fully optimised so feel free to fork the repo, make modifications and submit a pull request. If it all checks out I'll merge.
+This resource is ~~functional, albeit not fully optimised~~ performs much better now and can be used independent of the framework usedm so feel free to fork the repo, make modifications and submit a pull request. If it all checks out I'll merge.
 
 If you find any bugs or have any problems, open an issue and I'll see what I can do!
 
-
+A MASSIVE thankyou to [@mortdudley](https://github.com/mortdudley) for the significant improvements in pull request #2 to convert to standalone, cleaning code, oxmysql support, debug changes and for his time.
 
 Thanks,
 The Sysadmin
