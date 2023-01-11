@@ -28,6 +28,10 @@ If you find any bugs or have any problems, open an issue and I'll see what I can
 
 - [@thesysadmin](https://github.com/thesysadmindev)
 
+## Contributors
+
+- [@mortdudley](https://github.com/mortdudley) - All the changes in pull request #2.
+
 
 ## License
 
